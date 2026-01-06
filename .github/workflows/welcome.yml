@@ -9,7 +9,6 @@ jobs:
     name: Post welcome comment
     runs-on: ubuntu-latest
 
-    if: ${{ github.event_name.pull_request.opened }}
     steps:
       - run: gh pr comment $PR_URL --body "Pull request opened!!"
     
