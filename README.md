@@ -6,7 +6,7 @@ _Learn how to create and run a GitHub Actions workflow._
 
 </header>
 
-## Finish
+## The End
 
 _Congratulations friend, you've completed this course about GitHub Actions!_
 
