@@ -1,15 +1,22 @@
 name: Post welcome comment
 on:
   pull_request:
-    types: [opened]
+    types: [opened, closed]
 permissions:
   pull-requests: write
 jobs:
   build:
     name: Post welcome comment
     runs-on: ubuntu-latest
+
+    if: ${{ github.event_name.pull_request.opened }}
     steps:
-      - run: gh pr comment $PR_URL --body "Welcome to the repository!!"
-        env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-          PR_URL: ${{ github.event.pull_request.html_url }}
+      - run: gh pr comment $PR_URL --body "Pull request opened!!"
+    
+    #if: ${{ github.event_name.pull_request.closed }}
+    #steps:
+      #- run: gh pr comment $PR_URL --body "We closed the pull request"
+    
+    env:
+      GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+      PR_URL: ${{ github.event.pull_request.html_url }}
